@@ -99,23 +99,25 @@
 
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-         var imageData = context.getImageData(0, 0, 600, 500);
-         var data = imageData.data;
+         var imageData = context.getImageData(0, 0, 600, 500); // gets the data from the image on the first canvas
+         var data = imageData.data; 
 
-         for (var i = 0; i < data.length; i += 4) { 
+         for (var i = 0; i < data.length; i += 4) { // checks each pixel
+          // data [i] is red
+          // data[i+1] is green
+          // data[i+2] is blue
 
 
-
-          data[i] = 0;
-          data[i + 1] = 0;
+          data[i] = 0; // tells the code to remove all red pixels from the data about the image on the first canvas
+          data[i + 1] = 0; // tells the code to remove all green pixels from the data about the image on the first canvas
+          // this way we are left with only the blue pixelated data of the image on the first canvas
 
          }
 
-         bluecontext.putImageData(imageData, 0, 0);
-
+         
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
           
-          
+             bluecontext.putImageData(imageData, 0, 0); // this takes the data that has the blue pixelated version of the image on the first canvas and places it on the second canvas
           
           
         } // end of img.onload
@@ -148,21 +150,21 @@
       <div id="messageDisplayArea"></div>
       
       <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
-      <script> /* This script initiates the canvas and puts the text on the canvas "myCanvas" */
+      <script> /* This script creates the first canvas and puts the text on the canvas "myCanvas" */
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext("2d");
-        context.font = '20pt Calibri';
-        context.fillStyle = "black";
-        context.fillText("Original image will go here", 10, 20);
+        context.font = '20pt Calibri'; // assigns a font to the text
+        context.fillStyle = "black";// makes the text color black
+        context.fillText("Original image will go here", 10, 20); // puts the text " Original image will go here" at the coordinates 10,20 on the first canvas
       </script>
 
       <canvas id="blueCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
-      <script> /* This script initiates the canvas and puts the text on the canvas "blueCanvas" */
+      <script> /* This script creates the second canvas and puts the text on the canvas "blueCanvas" */
         var bluecanvas = document.getElementById('blueCanvas');
-        var bluecontext = bluecanvas.getContext("2d");
-        bluecontext.font = '20pt Calibri';
-        bluecontext.fillStyle = "black";
-        bluecontext.fillText("the image in blue will go here", 10, 20);
+        var bluecontext = bluecanvas.getContext("2d"); 
+        bluecontext.font = '20pt Calibri'; // assigns a font to the text
+        bluecontext.fillStyle = "black"; // makes the text color black
+        bluecontext.fillText("the image in blue will go here", 10, 20); // puts the text " the image in blue will go here" at the coordinates 10,20 on the second canvas
       </script>
 
      
